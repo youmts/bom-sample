@@ -23,6 +23,7 @@ RSpec.describe NodesController, type: :request do
       before do
         @root = create(:root)
         @child = @root.children.create(name: 'child')
+        @grandchild = @child.children.create(name: 'grandchild')
       end
 
       it 'treeを取得できること' do
@@ -32,6 +33,7 @@ RSpec.describe NodesController, type: :request do
         json = JSON.parse(response.body)
         expect(json["id"]).to eq @root.id
         expect(json["children"][0]["id"]).to eq @child.id
+        expect(json["children"][0]["children"][0]["id"]).to eq @grandchild.id
       end
     end
   end
