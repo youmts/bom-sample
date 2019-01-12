@@ -5,6 +5,7 @@ RSpec.describe NodesController, type: :request do
     context 'rootが存在する場合' do
       before do
         @root = create(:root)
+        @child = @root.children.create(name: 'child')
       end
 
       it '一覧情報を取得できること' do
@@ -12,8 +13,9 @@ RSpec.describe NodesController, type: :request do
         expect(response.status).to eq 200
 
         json = JSON.parse(response.body)
-        expect(json.size).to eq 1
+        expect(json.size).to eq 2
         expect(json[0]["id"]).to eq @root.id
+        expect(json[1]["id"]).to eq @child.id
       end
     end
   end
@@ -32,7 +34,11 @@ RSpec.describe NodesController, type: :request do
 
         json = JSON.parse(response.body)
         expect(json["id"]).to eq @root.id
+        expect(json["url"]).to eq node_url(@root, format: :json)
+
         expect(json["children"][0]["id"]).to eq @child.id
+        expect(json["children"][0]["url"]).to eq node_url(@child, format: json)
+
         expect(json["children"][0]["children"][0]["id"]).to eq @grandchild.id
       end
     end
