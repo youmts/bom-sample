@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+root = Node.create(name: 'root')
+child = root.children.create(name: 'child')
+child.children.create(name: 'grandchild')
