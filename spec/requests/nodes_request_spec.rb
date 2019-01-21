@@ -37,7 +37,7 @@ RSpec.describe NodesController, type: :request do
         expect(json["url"]).to eq node_url(@root, format: :json)
 
         expect(json["children"][0]["id"]).to eq @child.id
-        expect(json["children"][0]["url"]).to eq node_url(@child, format: json)
+        expect(json["children"][0]["url"]).to eq node_url(@child, format: :json)
 
         expect(json["children"][0]["children"][0]["id"]).to eq @grandchild.id
       end
