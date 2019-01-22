@@ -13,9 +13,8 @@ RSpec.describe NodesController, type: :request do
         expect(response.status).to eq 200
 
         json = JSON.parse(response.body)
-        expect(json.size).to eq 2
+        expect(json.size).to eq 1
         expect(json[0]["id"]).to eq @root.id
-        expect(json[1]["id"]).to eq @child.id
       end
     end
   end
