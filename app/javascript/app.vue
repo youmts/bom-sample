@@ -1,14 +1,30 @@
 <template>
   <div id="app">
-    <p>{{ message }}</p>
+    <button v-on:click="findRoots">find</button>
+    <ul>
+      <li v-for="root in roots" :key="root.id">
+        {{ root.name }}
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   data: function () {
     return {
-      message: "Hello Vue!"
+      roots: []
+    }
+  },
+  methods: {
+    findRoots() {
+      axios.get('nodes.json')
+        .then(res => {
+          console.log(res.data)
+          this.roots = res.data
+        })
     }
   }
 }

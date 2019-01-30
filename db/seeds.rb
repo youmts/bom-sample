@@ -9,3 +9,5 @@
 root = Node.create(name: 'root')
 child = root.children.create(name: 'child')
 child.children.create(name: 'grandchild')
+
+root2 = Node.create(name: 'root2')
