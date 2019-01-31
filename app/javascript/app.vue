@@ -2,7 +2,7 @@
   <div id="app">
     <button v-on:click="findRoots">find</button>
     <ul>
-      <li v-for="root in roots" :key="root.id">
+      <li v-for="root in roots" :key="root.id" v-on:click="findTree(root.url)">
         {{ root.name }}
       </li>
     </ul>
@@ -15,7 +15,8 @@ import axios from 'axios'
 export default {
   data: function () {
     return {
-      roots: []
+      roots: [],
+      tree: null,
     }
   },
   methods: {
@@ -25,7 +26,14 @@ export default {
           console.log(res.data)
           this.roots = res.data
         })
-    }
+    },
+    findTree(url) {
+      axios.get(url)
+        .then(res => {
+          console.log(res.data)
+          this.tree = res.data
+        })
+    },
   }
 }
 </script>
