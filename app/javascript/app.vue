@@ -1,15 +1,29 @@
 <template>
   <div id="app">
-    <ul>
-      <li v-for="root in roots" :key="root.id" v-on:click="findTree(root.url)">
-        {{ root.name }}
-      </li>
-    </ul>
+    <div id="list">
+      <ul>
+        <li v-for="root in roots" :key="root.id">
+          {{ root.name }}
+          <a v-on:click="findTree(root.url)">show</a>
+        </li>
+      </ul>
+    </div>
+    <div id="tree">
+      <ul v-if="tree"
+          style="padding-left: 0px">
+        <node
+          class="tree-root-item"
+          :model="tree"
+          :depth="0">
+        </node>
+      </ul>
+    </div>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
+import node from './components/node.vue'
 
 export default {
   data: function () {
@@ -17,6 +31,9 @@ export default {
       roots: [],
       tree: null,
     }
+  },
+  components: {
+    node
   },
   methods: {
     findRoots() {
@@ -31,6 +48,7 @@ export default {
         .then(res => {
           console.log(res.data)
           this.tree = res.data
+          this.tree.open = false
         })
     },
   },
