@@ -56,3 +56,28 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.tree-item {
+    list-style: none;
+    border-top: 1px solid #444;
+    border-left: 1px solid #444;
+}
+
+.tree-item-expander {
+    margin-left: 5px;
+    width: 30px;
+    float: left;
+    min-height: 1px;
+}
+
+.tree-item-nodestring {
+    width: 200px;
+    float: left;
+}
+
+.tree-item-column {
+    margin-left: 10px;
+    float: left;
+}
+</style>
