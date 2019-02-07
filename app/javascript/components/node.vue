@@ -2,7 +2,7 @@
   <li class="tree-item clearfix clear">
       <div class="tree-item-expander">
           <p v-if="isFolder" v-on:click="toggle">
-              [{{ model.open ? 'ー' : '＋' }}]
+              [{{ open ? 'ー' : '＋' }}]
           </p>
       </div>
       <div class="tree-item-nodestring"
