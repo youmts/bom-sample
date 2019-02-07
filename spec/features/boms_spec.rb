@@ -10,8 +10,6 @@ RSpec.feature "Boms", type: :feature do
   scenario "select root nodes, show bom", js: true do
     visit root_path
 
-    click_button "find"
-
     expect(page).to have_content @root.name
     expect(page).not_to have_content @child.name
     expect(page).not_to have_content @gchild.name

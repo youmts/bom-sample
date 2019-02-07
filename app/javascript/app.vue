@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <button v-on:click="findRoots">find</button>
     <ul>
       <li v-for="root in roots" :key="root.id" v-on:click="findTree(root.url)">
         {{ root.name }}
@@ -34,6 +33,9 @@ export default {
           this.tree = res.data
         })
     },
+  },
+  created: function() {
+    this.findRoots()
   }
 }
 </script>
