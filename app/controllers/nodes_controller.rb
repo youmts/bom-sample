@@ -7,7 +7,8 @@ class NodesController < ApplicationController
   end
 
   def show
-    @node = Node.find(params[:id])
+    node = Node.find(params[:id])
+    @hash_tree = node.hash_tree
     respond_to do |format|
       format.json # app/views/nodes/show.json.jbuilder
     end
