@@ -34,7 +34,7 @@ end
 
 root10000 = Node.create(name: 'root(10000)')
 9.times do |x|
-  c = root1000.children.create(name: Faker::Address.country)
+  c = root10000.children.create(name: Faker::Address.country)
   9.times do |y|
     gc = c.children.create(name: Faker::Address.city)
     9.times do |z|
