@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2019_01_06_065439) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "node_hierarchies", id: false, force: :cascade do |t|
     t.integer "ancestor_id", null: false
     t.integer "descendant_id", null: false
