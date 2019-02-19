@@ -1,14 +1,17 @@
 <template>
   <div id="app">
+    <button class="mdl-button mdl-js-button mdl-button--icon">
+      <i class="material-icons">mood</i>
+    </button>
     <div class="mdl-grid">
       <div class="mdl-cell mdl-cell--4-col">
         <div id="list">
           <ul class="mdl-list">
-            <li class="mdl-list__item" v-for="root in roots" :key="root.id">
+            <li class="mdl-list__item root-list-item" v-for="root in roots" :key="root.id">
               <span class="mdl-list__item-primary-content">{{ root.name }}</span>
               <span class="mdl-list__item-secondary-action">
                 <button
-                  class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect"
+                  class="mdl-button mdl-js-button mdl-button--icon"
                   v-on:click="findTree(root.url)">
                   <i class="material-icons">forward</i>
                 </button>
@@ -71,6 +74,15 @@ export default {
 </script>
 
 <style scoped>
+.root-list-item {
+  border-left: solid 8px gray;
+  background: whitesmoke;
+  margin-bottom: 5px;
+  line-height: 1.5;
+  border-radius: 0 15px 15px 0;
+  padding: 0.5em;
+}
+
 p {
   font-size: 2em;
   text-align: center;
