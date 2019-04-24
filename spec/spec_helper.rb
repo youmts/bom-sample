@@ -94,3 +94,7 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 =end
 end
+
+require "selenium-webdriver"
+require "capybara/rspec"
+Capybara.javascript_driver = :selenium_chrome_headless
