@@ -41,5 +41,8 @@ yarn-debug.log*
 # Ignore vscode
 .vscode
 
+# Ignore idea
+.idea
+
 # Ignore .lock
 /.lock-*
